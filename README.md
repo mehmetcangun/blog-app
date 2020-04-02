@@ -1,7 +1,7 @@
 # How to compile and run
 - install docker
 - open terminal
-- git clone
+- git clone https://github.com/mehmetcangun/blog-app.git
 - cd blog-app
 - docker compose up
 - wait until the echo server loaded.
