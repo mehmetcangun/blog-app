@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+    backend:
+        build: 
+            context: ./blog-post
+            dockerfile: Dockerfile
+        command: go run posts.go
+        volumes: 
+            - ./blog-post:/go/src/blog-post
+        ports: 
+            - "1414:1414"
+    
+    frontend:
+        build: 
+            context: ./blog-web-app
+            dockerfile: Dockerfile
+        volumes: 
+            - ./src/:/usr/src/app/src
+            - ./node_modules:/usr/src/app/node_modules
+        environment: 
+            - PORT=80
+            - NODE_ENV=development
+            - VUE_APP_URL=http://backend
